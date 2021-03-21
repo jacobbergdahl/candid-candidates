@@ -2,7 +2,7 @@
 
 This project is a basic website mimicking a system for handling candidates in corporate recruitment processes. You can add, edit, and delete candidates. The project is built with React and SCSS.
 
-You can view a live version of the website on [https://wonderful-hugle-b863c2.netlify.app/].
+You can view a live version of the website on https://wonderful-hugle-b863c2.netlify.app/.
 
 ## Installation
 
