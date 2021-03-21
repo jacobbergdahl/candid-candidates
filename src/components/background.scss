@@ -1,0 +1,11 @@
+.background {
+  background: rgb(65,63,84);
+  background: radial-gradient(circle, rgba(65,63,84,1) 0%, rgba(42,41,55,1) 100%); 
+  width: 100vh;
+  height: 100vh;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -10;
+}

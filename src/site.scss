@@ -1,0 +1,249 @@
+@import "./variables";
+
+body {
+  font-family: $fontPrimary;
+  color: white;
+}
+.wrapper-content {
+  padding: 0 1rem 4rem 1rem;
+
+  @media screen and (min-width: 700px) {
+    padding: 0 4rem 4rem 4rem;
+  }
+
+  @media screen and (min-width: 1000px) {
+    // padding: 0 20% 4rem 20%;
+  }
+}
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+h1 {
+  font-family: $fontSiteHeader;
+  cursor: default;
+  text-align: center;
+  font-size: 3.8em;
+  line-height: 0.9em;
+
+  @media screen and (min-width: 340px) {
+    font-size: 4.3em;
+  }
+}
+h2 {
+  font-family: $fontPrimary;
+  font-weight: 500;
+}
+p {
+  font-family: $fontPrimary;
+  font-weight: 400;
+
+  &.support-header {
+    text-align: center;
+    font-size: 1.4em;
+    margin-top: 0.5rem;
+  }
+}
+a, a:visited, .link {
+	color: $clrPositive;
+
+	&:hover, &:active {
+		cursor: pointer;
+
+		@media screen and (min-width: 1000px) {
+			text-decoration: underline;
+			color: $clrPositiveHover;
+		}
+	}
+}
+.margin-top {
+  margin-top: $marginStandard;
+}
+.margin-bottom {
+  margin-bottom: $marginStandard;
+}
+.margin-right {
+  margin-right: $marginStandard;
+}
+.margin-left {
+  margin-left: $marginStandard;
+}
+.padding-top {
+  padding-top: $marginStandard;
+}
+.padding-bottom {
+  padding-bottom: $marginStandard;
+}
+.padding-right {
+  padding-right: $marginStandard;
+}
+.padding-left {
+  padding-left: $marginStandard;
+}
+main {
+  min-height: 100vh;
+}
+.separator {
+  transform: rotate(180deg);
+
+  path {
+    transform: translate(0, 0px); 
+    opacity: 1;
+  }
+}
+.expand {
+  text-align: center;
+	display: block;
+  color: $clrPositiveLight;
+  text-decoration: underline;
+
+  &:hover {
+    color: $clrPositiveLightHover;
+    cursor: pointer;
+  }
+}
+.material-icons {
+  cursor: pointer;
+
+  &.dark {
+    color: $clrDark;
+
+    @media screen and (min-width: 1000px) {
+      &:hover {
+        color: $clrDarkHover;
+      }
+    }
+  }
+}
+.btn {
+  padding: 0.5rem 2rem;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid white;
+  color: white;
+  word-break: break-word;
+
+  &.rounded {
+    border-radius: 20px;
+  }
+
+  &.btn-circular {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    border-radius: 4rem;
+  }
+
+  &.btn-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: $clrPositive;
+    color: #fff;
+    border: none;
+
+    .material-icons {
+      font-size: 2em;
+      margin-top: 0.1rem;
+    }
+  }
+
+  &.btn-positive {
+    border: 1px solid $clrPositive;
+    color: $clrPositive;
+
+    &.fill {
+      background: $clrPositive;
+      color: #fff;
+    }
+  
+    &.transparent {
+      border: none;
+      color: $clrPositive;
+    }
+  }
+
+  &.btn-negative {
+    border: 1px solid $clrNegative;
+    color: $clrNegative;
+
+    &.fill {
+      background: $clrNegative;
+      color: #fff;
+    }
+
+    &.transparent {
+      border: none;
+      color: $clrNegative;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    &:hover {
+      color: black !important;
+      background: white;
+      transition: opacity 0.2s;
+
+      &.btn-positive, &.btn-negative, &.btn-cta {
+        color: #fff !important;
+      }
+
+      &.btn-positive {
+        background: $clrPositive;
+      }
+
+      &.btn-negative {
+        background: $clrNegative;
+      }
+
+      &.btn-cta {
+        background: $clrPositiveHover;
+      }
+    }
+  }
+}
+.display-none {
+  display: none !important;
+}
+.wrapper-recruitment-overview {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hide-on-desktop {
+  @media screen and (min-width: 1000px) {
+    display: none !important;
+  }
+}
+.show-on-desktop {
+  @media screen and (max-width: 1000px) {
+    display: none !important;
+  }
+}
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0;}
+}
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0;}
+}
+.fade-out {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-candidates {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
