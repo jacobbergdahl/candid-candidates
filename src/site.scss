@@ -467,7 +467,7 @@ main {
     flex-direction: column;
   }
 
-  &.being-edited, &.being-deleted {
+  &.being-deleted {
     flex-direction: column;
     padding-bottom: 2rem;
   }
