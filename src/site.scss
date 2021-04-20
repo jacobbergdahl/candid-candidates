@@ -1,18 +1,24 @@
+/*
+  I initially considered splitting this SCSS-file up into more, smaller SCSS-files, perhaps one per component. 
+  However, for the scope of this project, I decided to use a single SCSS file, bar one for variables.
+  The reason why is to reduce clutter and provide clarity. For larger projects, I prefer to split stylesheets up.
+*/
+
 @import "./variables";
 
+html {
+	scroll-behavior: smooth;
+}
 body {
   font-family: $fontPrimary;
   color: white;
+	scroll-behavior: smooth;
 }
 .wrapper-content {
   padding: 0 1rem 4rem 1rem;
 
   @media screen and (min-width: 700px) {
     padding: 0 4rem 4rem 4rem;
-  }
-
-  @media screen and (min-width: 1000px) {
-    // padding: 0 20% 4rem 20%;
   }
 }
 h1, h2, h3, h4, p {
@@ -45,6 +51,12 @@ p {
 }
 a, a:visited, .link {
 	color: $clrPositive;
+
+  &.btn-linkified {
+    text-align: left;
+    border: none;
+    background: none;
+  }
 
 	&:hover, &:active {
 		cursor: pointer;
@@ -91,10 +103,12 @@ main {
   }
 }
 .expand {
-  text-align: center;
+  text-align: center !important;
 	display: block;
   color: $clrPositiveLight;
   text-decoration: underline;
+  margin-left: auto;
+  margin-right: auto;
 
   &:hover {
     color: $clrPositiveLightHover;
@@ -133,6 +147,41 @@ main {
     border-radius: 4rem;
   }
 
+  &.btn-developer {
+    width: 8rem;
+    height: 4rem;
+    border-radius: 8rem;
+    border-style: dashed;
+    transition: 0.5s !important;
+
+    &:first-of-type {
+      margin-right: 1rem;
+    }
+
+    @media screen and (min-width: 1000px) {
+      height: 4rem;
+      width: 4rem;
+      transform: rotate(-12deg);
+      padding: 0;
+      font-size: 0.7em;
+      
+      &:first-of-type {
+        margin-right: 0rem;
+        margin-bottom: 1rem;
+      }
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+
+  &.btn-square {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+  }
+
   &.btn-cta {
     position: fixed;
     bottom: 2rem;
@@ -141,9 +190,20 @@ main {
     color: #fff;
     border: none;
 
+    a {  
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
     .material-icons {
       font-size: 2em;
-      margin-top: 0.1rem;
+      color: white;
+      font-size: 3em;
+      margin-left: auto;
+      margin-right: auto;
+      // margin-top: 0.1rem;
     }
   }
 
@@ -201,6 +261,19 @@ main {
     }
   }
 }
+.wrapper-developer-options {
+  margin: 4rem 0;
+  text-align: center;
+
+  @media screen and (min-width: 1000px) {
+    margin: 0;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
 .display-none {
   display: none !important;
 }
@@ -237,6 +310,14 @@ main {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+.speedy-fade-out {
+  opacity: 0;
+  transition: 0.1s;
+}
+.speedy-fade-in {
+  opacity: 1;
+  transition: 0.1s;
+}
 .no-padding {
   padding: 0 !important;
 }
@@ -246,4 +327,251 @@ main {
   img {
     width: 100%;
   }
+}
+
+.wrapper-input {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0.2rem;
+    font-weight: bold;
+  }
+
+  input, select {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid $clrPositive;
+  }
+}
+
+.wrapper-inner-header {
+  padding: 4rem 0;
+}
+
+.wrapper-footer {
+  margin-top: 15rem;
+  margin-bottom: 15rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+
+  span {
+    margin-bottom: 1rem;
+    font-family: Pacifico;
+    font-size: 3em;
+    cursor: default;
+  }
+
+  a {
+    margin-bottom: 0.3rem;  
+    margin-left: auto;
+    margin-right: auto;
+    color: $clrPositiveLight !important;
+
+    &:hover {
+      color: $clrPositiveLightHover !important;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    transform: rotate(-7deg);   
+  }
+}
+
+.background {
+  background: rgb(65,63,84);
+  background: radial-gradient(circle, rgba(65,63,84,1) 0%, rgba(42,41,55,1) 100%); 
+  width: 100vh;
+  height: 100vh;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -10;
+}
+
+.wrapper-add-candidate {
+  .btn-add-candidate {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 1000px) {
+      margin-right: 0;
+    }
+  }
+}
+
+.overlay {
+  @media screen and (min-width: 1000px) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    top: 0;
+    left: 0;
+    min-width: 100vh;
+    min-height: 100v;
+  
+    .wrapper-row {
+      max-width: 840px !important;
+      width: 840px !important;
+      margin-left: auto;
+      margin-right: auto;
+      top: 2rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      // I know, I know, it's 2021, but what can I say, box shadows look nice with overlays, sue me.
+      -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &.lite {
+      right: 0;
+      width: auto;
+      height: auto;
+      background: none;
+
+      .wrapper-inner-row {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-row {
+  background-color: white;
+  color: $clrDark;
+  width: 100%;
+  padding: 0;
+  border: none;
+  text-align: left;
+  border-bottom: 1px solid $clrDark;
+  display: flex;
+  align-items: center;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.being-edited, &.being-deleted {
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+
+  &.has-been-deleted {
+    background-color: $clrNegative;
+    color: white;
+
+    span {
+      text-align: center;
+    }
+  }
+
+  .wrapper-inner-row {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    span, a, strong {
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+
+    a {
+      margin-right: auto;
+    }
+  }
+
+  .flex {
+    display: flex;
+    width: 100%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .wrapper-row-buttons {
+    padding-bottom: 1rem;
+    text-align: center;
+
+    button:first-of-type {
+      margin-right: 1rem;
+    }
+  }
+
+  .material-icons {
+    padding-right: 1rem;
+    font-size: 2.2em;
+  }
+
+  button {
+    word-break: initial !important;
+  }
+
+  .show-on-row-hover {
+    display: none;
+  }
+
+  @media screen and (min-width: 1000px) {
+    &.clickable-row {
+      .link {
+        display: none;
+      }
+
+      &:hover, &:active, &:focus {
+        .link {
+          display: block;
+        }
+      }
+    }
+    &:hover, &:active, &:focus {
+      &.clickable-row {
+        background: $clrPositiveLightHover;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.columns-on-desktop {
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+
+    div {
+      flex-basis: 50%;
+
+      &:nth-child(odd) {
+        margin-right: 1rem;
+      }
+
+      &:nth-child(even) {
+        flex-basis: 47%;
+      }
+    }
+  }
+}
+
+.searchbar {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid white;
 }

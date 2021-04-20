@@ -1,9 +1,13 @@
+/*
+	A standardized select.
+*/
+
 import React from 'react';
-import { RECRUITMENT_STEPS } from '../model/recruitmentStep';
-import './inputelements.scss';
+import { RECRUITMENT_STEPS } from '../features/candidate/candidateModel';
 
 export const Select = (props) => {
   const id = `edit-${props.valueType.toLowerCase()}-${props.id}`;
+  
   return(
     <div className="wrapper-input">
       <label htmlFor={id}>{props.valueType}</label>

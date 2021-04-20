@@ -1,9 +1,13 @@
+/*
+	A standardized input.
+*/
+
 import React from 'react';
-import './inputelements.scss';
 
 export const Input = (props) => {
   const id = `edit-${props.valueType.toLowerCase()}-${props.id}`;
   let inputType = "text";
+
   switch (props.valueType.toLowerCase()) {
     case "email":
       inputType = "email";
@@ -12,6 +16,7 @@ export const Input = (props) => {
       inputType = "number";
       break;
   }
+
   return(
     <div className="wrapper-input">
       <label htmlFor={id}>{props.valueType}</label>
