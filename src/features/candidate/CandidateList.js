@@ -17,7 +17,7 @@ export const CandidateList = () => {
   const filterText = useSelector(getFilterText);
 
   // CandidateList is responsible for filtering the candidates, though the filterText is set in SearchBar
-  let candidateRows = candidates
+  const candidateRows = candidates
     // The filter looks at a range of values to determine whether to show a candidate
     .filter((candidate) => {
       return (
@@ -30,7 +30,7 @@ export const CandidateList = () => {
       );
     })
     // Candidates are then sorted in alphabetical order
-    .sort((a, b) => a._name > b._name)
+    .sort((a, b) => a._name.localeCompare(b._name))
     // Finally, the candidates are mapped into row components
     .map((candidate) => {
       let key = "row-" + candidate._id;
