@@ -12,25 +12,30 @@ export const CandidateList = () => {
   const showMoreCandidates = (e = null) => {
     setShownNumberOfCandidates(shownNumberOfCandidates + 50);
   }
-
+  
   const candidates = useSelector(getCandidates);
   const filterText = useSelector(getFilterText);
 
   // CandidateList is responsible for filtering the candidates, though the filterText is set in SearchBar
-  let candidateRows = candidates.filter((candidate) => {
-    return (
-      // The filter looks at a range of values to determine whether to show a candidate
-      (filterText === undefined || filterText === null) ||
-      candidate._name.toLowerCase().indexOf(filterText.toLowerCase()) > -1
-      || candidate._email.toLowerCase().indexOf(filterText.toLowerCase()) > -1
-      || candidate._address.toLowerCase().indexOf(filterText.toLowerCase()) > -1
-      || candidate._recruitmentStep.toLowerCase().indexOf(filterText.toLowerCase()) > -1
-      || candidate._age == filterText
-    );
-  }).map((candidate) => {
-    let key = "row-" + candidate._id;
-    return <CandidateRow candidate={candidate} key={key}/>
-  });
+  let candidateRows = candidates
+    // The filter looks at a range of values to determine whether to show a candidate
+    .filter((candidate) => {
+      return (
+        (filterText === undefined || filterText === null) ||
+        candidate._name.toLowerCase().indexOf(filterText.toLowerCase()) > -1
+        || candidate._email.toLowerCase().indexOf(filterText.toLowerCase()) > -1
+        || candidate._address.toLowerCase().indexOf(filterText.toLowerCase()) > -1
+        || candidate._recruitmentStep.toLowerCase().indexOf(filterText.toLowerCase()) > -1
+        || candidate._age == filterText
+      );
+    })
+    // Candidates are then sorted in alphabetical order
+    .sort((a, b) => a._name > b._name)
+    // Finally, the candidates are mapped into row components
+    .map((candidate) => {
+      let key = "row-" + candidate._id;
+      return <CandidateRow candidate={candidate} key={key}/>
+    });
 
   return (
     <div className="wrapper-candidates">

@@ -15,7 +15,7 @@ export const candidateSlice = createSlice({
   name: 'candidate',
   initialState,
   reducers: {
-    // Redux Toolkit allows us to write "mutating" logic in reducers. It
+    // Redux Toolkit allows us to write mutating logic in reducers. It
     // doesn't actually mutate the state because it uses the Immer library,
     // which detects changes to a "draft state" and produces a brand new
     // immutable state based off those changes
@@ -23,9 +23,8 @@ export const candidateSlice = createSlice({
       const candidate = action.payload;
       // The candidate is removed via filtering
       const newCandidateList = state.allCandidates.filter((c) => c._id != candidate._id);
-      // And added anew
+      // And added anew with the new data
       newCandidateList.push(candidate);
-      newCandidateList.sort((c1, c2) => c1._id - c2._id);
       state.allCandidates = newCandidateList;
     },
     deleteCandidate: (state, action) => {
