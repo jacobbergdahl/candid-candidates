@@ -79,7 +79,7 @@ export const CandidateRow = (props) => {
   // The candidate is being edited.
   if (isBeingEdited) {
     return (
-      <div className="wrapper-row being-edited">
+      <div className="wrapper-row being-edited" data-cy="wrapper-row">
         <form onSubmit={e => onSubmitEditedCandidate(e)}>
           <div className="wrapper-inner-row columns-on-desktop">
             <Input id={candidate._id} valueType="Name" defaultValue={candidate._name} onChange={handleEditFormChange}/>
@@ -89,7 +89,7 @@ export const CandidateRow = (props) => {
             <Select id={candidate._id} valueType="Status" defaultValue={candidate._recruitmentStep} onChange={handleEditFormChange} />
           </div>
           <div className="wrapper-row-buttons">
-            <button type="submit" className="btn btn-positive">Confirm</button>
+            <button type="submit" className="btn btn-positive" data-cy="btn-confirm-edits">Confirm</button>
             <button type="button" className="btn btn-negative transparent" onClick={() => toggleIsBeingEdited()}>Cancel</button>
           </div>
         </form>
@@ -105,7 +105,7 @@ export const CandidateRow = (props) => {
   // The candidate is currently deleting. This will be shown for 2900ms.
   else if (isDeleting) {
     return (
-      <div className="wrapper-row has-been-deleted fade-out">
+      <div className="wrapper-row has-been-deleted fade-out" data-cy="wrapper-row">
         <div className="wrapper-inner-row">
           <span>The candidate has been deleted.</span>
         </div>
@@ -115,11 +115,11 @@ export const CandidateRow = (props) => {
   // The user is considering deleting the candidate.
   else if (isBeingDeleted) {
     return (
-      <div className="wrapper-row being-deleted">
+      <div className="wrapper-row being-deleted" data-cy="wrapper-row">
         <div className="wrapper-inner-row">
           <span>Are you sure that you wish to delete candidate {candidate._name}? This action cannot be undone.</span>
         </div>
-        <button type="button" className="btn btn-negative margin-bottom margin-top" onClick={() => deleteUser()}>Yes, delete the candidate</button>
+        <button type="button" className="btn btn-negative margin-bottom margin-top" data-cy="btn-confirm-delete-candidate" onClick={() => deleteUser()}>Yes, delete the candidate</button>
         <button type="button" className="btn btn-positive transparent" onClick={() => setIsBeingDeleted(!isBeingDeleted)}>No, go back</button>
       </div>
     );
@@ -127,10 +127,10 @@ export const CandidateRow = (props) => {
   // The view has been expanded to reveal more information and options.
   else if (isExpanded) {
     return (
-      <div className="wrapper-row column">
+      <div className="wrapper-row column" data-cy="wrapper-row">
         <div className="flex">
           <div className="wrapper-inner-row">
-            <span><strong>{candidate._name}</strong></span>
+            <span><strong data-cy="row-username">{candidate._name}</strong></span>
             <a href={mailto}>{candidate._email}</a>
             <span>{candidate._address}</span>
             <span>{candidate._age} years old</span>
@@ -139,8 +139,8 @@ export const CandidateRow = (props) => {
           <button className="padding-right link btn-linkified" onClick={() => setIsExpanded(!isExpanded)}>Collapse</button>
         </div>
         <div className="wrapper-row-buttons">
-          <button type="button" className="btn btn-positive" onClick={() => toggleIsBeingEdited()}>Edit</button>
-          <button type="button" className="btn btn-negative" onClick={() => setIsBeingDeleted(!isBeingDeleted)}>Delete</button>
+          <button type="button" className="btn btn-positive" data-cy="btn-edit-candidate" onClick={() => toggleIsBeingEdited()}>Edit</button>
+          <button type="button" className="btn btn-negative" data-cy="btn-delete-candidate" onClick={() => setIsBeingDeleted(!isBeingDeleted)}>Delete</button>
         </div>
       </div>
     );
@@ -149,9 +149,9 @@ export const CandidateRow = (props) => {
   else {
     const controls = candidate._id + "-controls";
     return (
-      <button className="wrapper-row clickable-row" onClick={() => setIsExpanded(!isExpanded)} aria-controls={controls}>
+      <button className="wrapper-row clickable-row" onClick={() => setIsExpanded(!isExpanded)} aria-controls={controls} data-cy="wrapper-row">
         <div className="wrapper-inner-row">
-          <span><strong>{candidate._name}</strong></span>
+          <span><strong data-cy="row-username">{candidate._name}</strong></span>
           {/* If the user has entered a search query, matching fields will be shown.
               In a real application, I think these if-statement would be placed in a separate file,
               to standardize the conditions. But for this small project, this works well. */}

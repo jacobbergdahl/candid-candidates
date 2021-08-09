@@ -37,12 +37,12 @@ export const CandidateAdd = () => {
   return(
     <div className="wrapper-add-candidate margin-bottom">
       {(isAddingCandidate === false || window.innerWidth >= 1000) &&
-        <button type="button" className="btn btn-add-candidate" onClick={() => toggleIsAddingCandidate()}>
+        <button type="button" className="btn btn-add-candidate" data-cy="btn-add-candidate" onClick={() => toggleIsAddingCandidate()}>
           Add a candidate
         </button>
       }
       {isAddingCandidate === true &&
-        <div className="overlay">
+        <div className="overlay" data-cy="overlay-add-candidate">
           <div className="wrapper-row flex-column">
             <h2 className="margin-top">Add a new candidate</h2>
             <form onSubmit={e => onSubmit(e)} className="add-candidate-window">
@@ -54,15 +54,15 @@ export const CandidateAdd = () => {
                 <Select id={candidate._id} valueType="Status" defaultValue={RECRUITMENT_STEPS.CONTACT} onChange={e => candidate._recruitmentStep = RECRUITMENT_STEPS[e.target.value]} />
               </div>
               <div className="wrapper-row-buttons">
-                <button type="submit" className="btn btn-positive">Add candidate</button>
-                <button type="button" className="btn btn-negative transparent" onClick={() => toggleIsAddingCandidate()}>Cancel</button>
+                <button type="submit" className="btn btn-positive" data-cy="btn-confirm-add-candidate">Add candidate</button>
+                <button type="button" className="btn btn-negative transparent" data-cy="btn-cancel-add-candidate" onClick={() => toggleIsAddingCandidate()}>Cancel</button>
               </div>
             </form>
           </div>
         </div>
       }
       {justAddedCandidate === true &&
-        <div className="overlay lite">
+        <div className="overlay lite" data-cy="overlay-has-added-candidate">
           <div className="wrapper-row fade-out">
             <div className="wrapper-inner-row">
               Candidate added! :)

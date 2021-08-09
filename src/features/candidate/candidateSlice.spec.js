@@ -1,5 +1,8 @@
 /*
-  Some very light testing of candidateSlice. You can run these tests by running $ npm test
+  Some very basic testing of the redux reducer.
+  To run: $ npm test
+  
+  Also, see ~/cypress for UI tests.
 */
 
 import { Candidate, RECRUITMENT_STEPS } from "./candidateModel";

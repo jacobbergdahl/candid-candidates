@@ -20,7 +20,7 @@ export const BackToTopButton = () => {
 		<div className={isVisible ? "speedy-fade-in" : "speedy-fade-out"}>
 			<button type="button" className="btn btn-cta btn-square">
 				<a href="#header">
-					<span class="material-icons">
+					<span className="material-icons">
 					keyboard_arrow_up
 					</span>
 				</a>

@@ -16,6 +16,7 @@ export const SearchBar = () => {
 			type="text"
 			placeholder="Search by name, address, e-mail, etc."
 			className="searchbar margin-bottom"
+            data-cy="searchbar"
 			value={filerText}
 			onChange={(e) => dispath(changeFilterText(e.target.value))}
 		/>

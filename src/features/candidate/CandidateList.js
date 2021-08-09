@@ -38,13 +38,13 @@ export const CandidateList = () => {
     });
 
   return (
-    <div className="wrapper-candidates">
+    <div className="wrapper-candidates" data-cy="wrapper-candidates">
       {/* If you're new to React, the line below might look strange.
           The array candidateRows, which contains CandidateRow's, is
           iterated through, but only up until the shownNumberOfCandidates. */}
       {candidateRows.slice(0, shownNumberOfCandidates)}
       {candidateRows.length === 0 &&
-        <div className="no-candidates"><img src="img/no_candidates_found.jpg" alt="No candidates found" /></div>
+        <div className="no-candidates" data-cy="no-candidates"><img src="img/no_candidates_found.jpg" alt="No candidates found" /></div>
       }
       {candidateRows.length > shownNumberOfCandidates && 
         <button className="expand link btn-linkified show-more margin-top" onClick={showMoreCandidates} tabIndex="0">Show more candidates</button>
